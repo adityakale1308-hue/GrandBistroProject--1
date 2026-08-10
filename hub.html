@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduKit | Premium Engineering Resources</title>
+    
+    <!-- FIX: Loading the Checkout Script at the very top prevents 404 connection block drops -->
+    <script src="https://razorpay.com"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f6fa;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #111111;
+        }
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #9b59b6;
+            letter-spacing: 1px;
+        }
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), #8e44ad;
+            color: white;
+            height: 35vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            color: #e0d0ea;
+            max-width: 600px;
+            font-size: 1.1rem;
+        }
+        .store-grid {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #eef0f2;
+        }
+        .badge {
+            background: #f3e5f5;
+            color: #8e44ad;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        .product-card p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .price-tag {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 25px 0 15px 0;
+        }
+        .old-price {
+            font-size: 1rem;
+            color: #95a5a6;
+            text-decoration: line-through;
+            margin-left: 6px;
+        }
+        .buy-btn {
+            width: 100%;
+            background-color: #9b59b6;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .buy-btn:hover {
+            background-color: #8e44ad;
+        }
+        footer {
+            text-align: center;
+            color: #95a5a6;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #eef0f2;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">EDUKIT</div>
+        <nav><a href="#store">Browse Bundles</a></nav>
+    </header>
+
+    <section class="hero">
+        <h1>Ace Your Semester Exams</h1>
+        <p>Download verified study blueprints, viva answer kits, and full-stack source code templates instantly.</p>
+    </section>
+
+    <main id="store" class="store-grid">
+        <div class="product-card">
+            <div class="card-top">
+                <span class="badge">SEMESTER 5</span>
+                <h3>Java Full-Stack Project Kit</h3>
+                <p>Complete functional restaurant reservation source code including HTML layouts, CSS styling, and Java manager classes with full setup documentation.</p>
+            </div>
+            <div class="card-bottom">
+                <div class="price-tag">₹399 <span class="old-price">₹999</span></div>
+                <button class="buy-btn" id="checkoutBtn">Buy & Download Instant</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 EduKit Hub. Engineered for Students.</p>
+    </footer>
+
+    <script>
+        document.getElementById("checkoutBtn").addEventListener("click", () => {
+            
+            // 1. PLACE YOUR ORIGINAL RAZORPAY TEST KEY ID HERE ONLY
+            const MY_RAZORPAY_KEY = "rzp_test_TO2yepI8ZuTai8"; 
+
+            // 2. Safety Gate verifying if Razorpay script loaded completely
+            if (typeof Razorpay === "undefined") {
+                alert("Razorpay checkout is blocked. Please refresh the page or try using a different internet browser.");
+                return;
+            }
+
+            const options = {
+                "key": MY_RAZORPAY_KEY, 
+                "amount": 399 * 100, // ₹399 computed in paise
+                "currency": "INR",
+                "name": "EduKit Hub",
+                "description": "Java Full-Stack Project Kit Purchase",
+                "image": "https://flaticon.com",
+                "handler": function (response) {
+                    alert("Payment Verified! Transaction ID Reference: " + response.razorpay_payment_id);
+                },
+                "prefill": {
+                    "name": "Student User",
+                    "email": "student@college.edu"
+                },
+                "theme": { "color": "#9b59b6" }
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.open();
+        });
+    </script>
+</body>
+</html>
