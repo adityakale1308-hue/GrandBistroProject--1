@@ -1,0 +1,156 @@
+
+/* Core Styling Rules Layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f6fa;
+}
+
+/* Header Component Configuration */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: #111111;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #9b59b6; /* Premium Purple Highlights */
+    letter-spacing: 1px;
+}
+
+header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #9b59b6;
+}
+
+/* Hero Branding Layout Canvas */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), #8e44ad;
+    color: white;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.hero p {
+    color: #e0d0ea;
+    max-width: 600px;
+    font-size: 1.1rem;
+}
+
+/* Catalog Store Grid Architecture */
+.store-grid {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Interactive Product Item Cards UI */
+.product-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #eef0f2;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+}
+
+.badge {
+    background: #f3e5f5;
+    color: #8e44ad;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.product-card p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.price-tag {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 25px 0 15px 0;
+}
+
+.old-price {
+    font-size: 1rem;
+    color: #95a5a6;
+    text-decoration: line-through;
+    margin-left: 6px;
+    font-weight: normal;
+}
+
+/* Call To Action Buttons Styling */
+.buy-btn {
+    width: 100%;
+    background-color: #9b59b6;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buy-btn:hover {
+    background-color: #8e44ad;
+}
+
+footer {
+    text-align: center;
+    color: #95a5a6;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+    border-top: 1px solid #eef0f2;
+    margin-top: 60px;
+}
